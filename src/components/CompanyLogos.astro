@@ -1,0 +1,65 @@
+---
+import { companies } from '../data/companies';
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Trusted By</span>
+      <h2>Companies I've Recruited For</h2>
+    </div>
+    <div class="logos-row">
+      {companies.map((company) => (
+        <div class="logo-item">
+          <img src={company.logo} alt={company.name} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logos-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .logo-item {
+    flex: 0 0 auto;
+    width: 270px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    transform: scale(1);
+  }
+
+  .logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  @media (max-width: 640px) {
+    .logos-row {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .logo-item {
+      width: 100px;
+      height: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="For Professionals" description="Career coaching and job search programs for international professionals.">
+  <div class="page-hero">
+    <div class="container">
+      <span class="label" style="color: rgba(255,255,255,0.7);">For Professionals</span>
+      <h1>Consulting Job Search Program For Individuals</h1>
+      <p>A personalized career acceleration program designed to help you enter or advance in the Danish consulting market.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">The Program</span>
+        <h2>What's Included</h2>
+      </div>
+
+      <div class="program-grid">
+        <div class="program-step card">
+          <div class="step-badge">1</div>
+          <h3>Personalised Career &amp; Skills Review</h3>
+          <p>
+            A detailed assessment of your skills, experience, interests, and transferable competencies tailored to align with the needs of the Danish consulting industry.
+          </p>
+        </div>
+
+        <div class="program-step card">
+          <div class="step-badge">2</div>
+          <h3>CV &amp; LinkedIn Optimisation</h3>
+          <p>
+            Hands-on support in rewriting and optimising your CV and LinkedIn profile to ensure you stand out to Danish employers and recruiters.
+          </p>
+        </div>
+
+        <div class="program-step card">
+          <div class="step-badge">3</div>
+          <h3>Target Company Strategy</h3>
+          <p>
+            Guidance in identifying and approaching 1–3 consulting firms that match your profile and career goals. Includes assistance with crafting strong unsolicited applications to your dream companies.
+          </p>
+        </div>
+
+        <div class="program-step card">
+          <div class="step-badge">4</div>
+          <h3>Interview Preparation <br/>&nbsp;</h3>
+          <p>
+            Comprehensive interview coaching, including mock interviews and personalised feedback to help you perform at your best in both case and fit interviews.
+          </p>
+        </div>
+
+        <div class="program-step card">
+          <div class="step-badge">5</div>
+          <h3>One-on-One Coaching Sessions</h3>
+          <p>
+            Individual sessions over the course of 1-3 months customised to your needs, providing structured guidance, accountability, and ongoing support throughout your job search journey.
+          </p>
+        </div>
+
+        <div class="program-step card">
+          <div class="step-badge">6</div>
+          <h3>Access to Our Network <br/>&nbsp;</h3>
+          <p>
+            Gain exposure through our network of recruiters and select consulting firms. We connect you with potential career opportunities in Denmark.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container" style="text-align: center;">
+      <h2>Ready to Take the Next Step?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-size: 1.25rem; margin: 1rem auto 2rem; max-width: 500px;">
+        Let's build a plan to land your dream role in Denmark.
+      </p>
+      <a href="/#contact" class="btn btn-white">Get Started</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .program-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .program-step {
+    padding: 2rem;
+    position: relative;
+  }
+
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+
+  .program-step h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .program-step p {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+  }
+
+  .cta-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0e7490 100%);
+    color: white;
+  }
+
+  .cta-section h2 {
+    color: white;
+  }
+
+  @media (max-width: 1024px) {
+    .program-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .program-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

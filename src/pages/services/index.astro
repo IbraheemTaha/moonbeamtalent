@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Services" description="IT Recruitment, Onboarding Support, and Career Coaching services by Moonbeam Talent.">
+  <div class="page-hero">
+    <div class="container">
+      <span class="label" style="color: rgba(255,255,255,0.7);">Our Services</span>
+      <h1>Recruitment Solutions That Deliver</h1>
+      <p>From executive search to career coaching, tailored support for businesses and professionals alike.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-grid">
+        <div class="service-detail card">
+          <div class="service-icon-lg">🔍</div>
+          <h3>IT Recruitment</h3>
+          <br/>
+          <p>
+            In addition to recruitment, I offer tailored onboarding services to help internationals and their families settle smoothly in Denmark. From CPR registration, housing, schools, and cultural immersion to spousal integration and networking support, I make the transition faster and more effective—improving early performance and retention.
+          </p>
+          <a href="/services/business" class="btn btn-outline">Learn More</a>
+        </div>
+
+        <div class="service-detail card">
+          <div class="service-icon-lg">🏠</div>
+          <h3>Onboarding Support</h3>
+          <p>
+            In addition to recruitment, I offer tailored onboarding services to help internationals and their families settle smoothly in Denmark. From CPR registration, housing, schools, and cultural immersion to spousal integration and networking support, I make the transition faster and more effective—improving early performance and retention.
+          </p>
+        </div>
+
+        <div class="service-detail card">
+          <div class="service-icon-lg">🎯</div>
+          <h3>Career Coaching for Internationals</h3>
+          <p>
+            I also provide personalized career coaching for individuals navigating the Danish job market. This includes CV and LinkedIn optimization, interview preparation, and targeted company outreach, along with access to my network—empowering internationals to showcase their skills, find opportunities, and succeed with confidence.
+          </p>
+          <a href="/services/talent" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section (Casis-inspired) -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">How We Work</span>
+        <h2>Our Recruitment Process</h2>
+        <p>A structured approach that ensures quality at every stage.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Calibrate</h3>
+          <p>We deeply understand your needs, culture, and what makes a great fit for your team.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Source</h3>
+          <p>Targeted sourcing across multiple channels with a focus on diversity and quality.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Screen</h3>
+          <p>Thorough assessment of technical skills, cultural fit, and motivation.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Hired</h3>
+          <p>Offer negotiation, onboarding support, and continuous follow-up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container" style="text-align: center;">
+      <h2>Ready to Build Your Team?</h2>
+      <p style="color: rgba(255,255,255,0.85); font-size: 1.25rem; margin: 1rem auto 2rem; max-width: 500px;">
+        Let's discuss how Moonbeam Talent can help you find the right people.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/services/business" class="btn btn-outline" style="color: white; border-color: white;">For Businesses</a>
+        <a href="/services/talent" class="btn btn-outline" style="color: white; border-color: white;">For Professionals</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .service-detail {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .service-icon-lg {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-detail h3 {
+    margin-bottom: 1rem;
+  }
+
+  .service-detail p {
+    color: var(--color-secondary);
+    margin-bottom: 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .step {
+    text-align: center;
+    flex: 1;
+    max-width: 220px;
+    padding: 0 1rem;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+  }
+
+  .step h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .step-connector {
+    width: 60px;
+    height: 2px;
+    background: var(--color-border);
+    margin-top: 30px;
+    flex-shrink: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0e7490 100%);
+    color: white;
+  }
+
+  .cta-section h2 {
+    color: white;
+  }
+
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .process-steps {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-connector {
+      width: 2px;
+      height: 40px;
+      margin: 0;
+    }
+  }
+</style>

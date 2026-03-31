@@ -1,0 +1,110 @@
+---
+import { testimonials } from '../data/testimonials';
+const preview = testimonials.slice(0, 4);
+---
+
+<section class="section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Testimonials</span>
+      <h2>What People Say</h2>
+      <p>Hear from the professionals and hiring managers Nivedita has worked with.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      {preview.map((t) => (
+        <div class="testimonial-card card">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">
+            {t.text.split(' ').slice(0, 40).join(' ')}...
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              {t.name.split(' ').map(n => n[0]).join('')}
+            </div>
+            <div>
+              <div class="author-name">{t.name}</div>
+              <div class="author-role">{t.role} @ {t.company}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="testimonials-cta">
+      <a href="/testimonials" class="btn btn-outline">Read All Testimonials</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote-icon {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--color-accent);
+    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-text {
+    flex: 1;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .author-name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-primary);
+  }
+
+  .author-role {
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+  }
+
+  .testimonials-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

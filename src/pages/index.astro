@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FeaturedServices from '../components/FeaturedServices.astro';
+import AboutPreview from '../components/AboutPreview.astro';
+import CompanyLogos from '../components/CompanyLogos.astro';
+import TestimonialsPreview from '../components/TestimonialsPreview.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout title="Home">
+  <Hero
+    title="3,000+ hires. Global reach. Deeply personal recruitment."
+    subtitle="Helping startups and scale-ups build diverse, high-performing teams across Europe, North America, and India."
+    cta="Let's talk"
+    ctaLink="#contact"
+    showMetrics={true}
+  />
+  <FeaturedServices />
+  <AboutPreview />
+  <CompanyLogos />
+  <TestimonialsPreview />
+  <ContactForm />
+</Layout>

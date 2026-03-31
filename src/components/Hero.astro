@@ -1,0 +1,118 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  cta?: string;
+  ctaLink?: string;
+  showMetrics?: boolean;
+}
+
+const { title, subtitle, cta, ctaLink, showMetrics = false } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <h1>{title}</h1>
+      {subtitle && <p class="hero-subtitle">{subtitle}</p>}
+      {cta && ctaLink && (
+        <div class="hero-actions">
+          <a href={ctaLink} class="btn btn-white">{cta}</a>
+        </div>
+      )}
+      {showMetrics && (
+        <div class="hero-metrics">
+          <div class="metric">
+            <span class="metric-value">3,000+</span>
+            <span class="metric-label">Hires Globally</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">12+</span>
+            <span class="metric-label">Years Experience</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">3</span>
+            <span class="metric-label">Continents</span>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+  <div class="hero-gradient"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 10rem 0 6rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0e7490 100%);
+    color: white;
+    overflow: hidden;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, var(--color-bg), transparent);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 720px;
+  }
+
+  .hero h1 {
+    color: white;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-metrics {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .hero-metrics .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+  }
+
+  .hero-metrics .metric-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 8rem 0 4rem;
+    }
+
+    .hero-metrics {
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+  }
+</style>

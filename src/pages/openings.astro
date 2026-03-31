@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Open Positions" description="Browse current job openings from Moonbeam Talent.">
+  <div class="page-hero">
+    <div class="container">
+      <span class="label" style="color: rgba(255,255,255,0.7);">Careers</span>
+      <h1>Open Positions</h1>
+      <p>Explore current opportunities from companies we partner with.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="iframe-wrapper">
+        <iframe
+          src="https://app.happlicant.com/r/moonbeam-talent/embed"
+          title="Open Positions"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .iframe-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .iframe-wrapper iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+    display: block;
+  }
+</style>
