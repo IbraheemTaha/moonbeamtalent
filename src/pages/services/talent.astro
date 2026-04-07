@@ -2,71 +2,155 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="For Professionals" description="Career coaching and job search programs for international professionals.">
+<Layout title="For Job Seekers" description="Career coaching and job search programs for international professionals.">
   <div class="page-hero">
     <div class="container">
-      <span class="label" style="color: rgba(255,255,255,0.7);">For Professionals</span>
-      <h1>Consulting Job Search Program For Individuals</h1>
-      <p>A personalized career acceleration program designed to help you enter or advance in the Danish consulting market.</p>
+      <span class="label" style="color: rgba(255,255,255,0.7);">For Job Seekers</span>
+      <h1>Your Career, Your Path</h1>
+      <p>Tailored support to help you break into or advance in the Danish job market.</p>
+    </div>
+  </div>
+
+  <!-- Tab strip -->
+  <div class="tab-strip">
+    <div class="container">
+      <div class="tab-nav">
+        <button class="tab-btn" data-tab="workshops">🎓 Workshops</button>
+        <button class="tab-btn active" data-tab="programs">📋 Personalized Job Search Programs</button>
+        <button class="tab-btn" data-tab="consulting">🤝 1-1 Consulting</button>
+      </div>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
-      <div class="section-header">
-        <span class="label">The Program</span>
-        <h2>What's Included</h2>
-      </div>
 
-      <div class="program-grid">
-        <div class="program-step card">
-          <div class="step-badge">1</div>
-          <h3>Personalised Career &amp; Skills Review</h3>
-          <p>
-            A detailed assessment of your skills, experience, interests, and transferable competencies tailored to align with the needs of the Danish consulting industry.
-          </p>
-        </div>
-
-        <div class="program-step card">
-          <div class="step-badge">2</div>
-          <h3>CV &amp; LinkedIn Optimisation</h3>
-          <p>
-            Hands-on support in rewriting and optimising your CV and LinkedIn profile to ensure you stand out to Danish employers and recruiters.
-          </p>
-        </div>
-
-        <div class="program-step card">
-          <div class="step-badge">3</div>
-          <h3>Target Company Strategy</h3>
-          <p>
-            Guidance in identifying and approaching 1–3 consulting firms that match your profile and career goals. Includes assistance with crafting strong unsolicited applications to your dream companies.
-          </p>
-        </div>
-
-        <div class="program-step card">
-          <div class="step-badge">4</div>
-          <h3>Interview Preparation <br/>&nbsp;</h3>
-          <p>
-            Comprehensive interview coaching, including mock interviews and personalised feedback to help you perform at your best in both case and fit interviews.
-          </p>
-        </div>
-
-        <div class="program-step card">
-          <div class="step-badge">5</div>
-          <h3>One-on-One Coaching Sessions</h3>
-          <p>
-            Individual sessions over the course of 1-3 months customised to your needs, providing structured guidance, accountability, and ongoing support throughout your job search journey.
-          </p>
-        </div>
-
-        <div class="program-step card">
-          <div class="step-badge">6</div>
-          <h3>Access to Our Network <br/>&nbsp;</h3>
-          <p>
-            Gain exposure through our network of recruiters and select consulting firms. We connect you with potential career opportunities in Denmark.
-          </p>
+      <!-- a. Workshops -->
+      <div class="tab-panel hidden" id="panel-workshops">
+        <div class="empty-state">
+          <span class="empty-icon">🎓</span>
+          <h3>Workshops Coming Soon</h3>
+          <p>We're preparing group sessions to help you navigate the Danish job market with confidence. <a href="/contact">Get in touch</a> to be notified when new sessions are announced.</p>
         </div>
       </div>
+
+      <!-- b. Personalized Job Search Programs -->
+      <div class="tab-panel" id="panel-programs">
+        <div class="programs-grid">
+
+          <div class="program-card card" tabindex="0">
+            <div class="card-top">
+              <span class="duration-badge">4-week</span>
+              <h3>Essential Launch</h3>
+              <p class="tagline">A strong foundation for your Danish job search.</p>
+            </div>
+            <div class="divider"></div>
+            <p class="includes-title">What's included:</p>
+            <ul class="include-list">
+              <li>4 × 1:1 coaching sessions covering your profile, interests, and skills so you get a realistic picture of where you stand in the Danish job market and how to pitch yourself with confidence</li>
+              <li>CV review and optimisation tailored for the Danish market</li>
+              <li>LinkedIn profile enhancement for visibility and recruiter appeal</li>
+              <li>A personalised cover letter template you can adapt for each application</li>
+              <li>Weekly check-ins to keep you focused and on track</li>
+              <li>Hands-on support with applications for 2 job roles you bring to us</li>
+              <li>Email and call support throughout the program</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline btn-full">Get Started</a>
+          </div>
+
+          <div class="program-card card card-featured" tabindex="0">
+            <div class="featured-ribbon">Most Popular</div>
+            <div class="card-top">
+              <span class="duration-badge">6-week</span>
+              <h3>Growth Accelerator</h3>
+              <p class="tagline">A focused upgrade for your Danish job search.</p>
+            </div>
+            <div class="divider"></div>
+            <p class="includes-title">What's included:</p>
+            <p class="includes-prev">Everything from <strong>Essential Launch</strong>, plus:</p>
+            <ul class="include-list">
+              <li>6 × 1:1 coaching sessions, held weekly to keep your momentum going</li>
+              <li>A personalised job search strategy with 3 matched roles researched for your profile, then hands-on support through the full application process</li>
+              <li>Mock interview with tailored feedback whenever you get shortlisted</li>
+              <li>Application review for multiple roles within the 6 weeks</li>
+              <li>Continued email and text support between sessions</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline btn-full">Get Started</a>
+          </div>
+
+          <div class="program-card card" tabindex="0">
+            <div class="card-top">
+              <span class="duration-badge">10-week</span>
+              <h3>Full Transformation</h3>
+              <p class="tagline">A full redesign of your Danish job search.</p>
+            </div>
+            <div class="divider"></div>
+            <p class="includes-title">What's included:</p>
+            <p class="includes-prev">Everything in the first <strong>2 packages</strong>, plus:</p>
+            <ul class="include-list">
+              <li>10 × 1:1 sessions covering strategy, mindset, interview preparation, and networking</li>
+              <li>Full rewrite of your CV, LinkedIn, and multiple tailored cover letters</li>
+              <li>Job market mapping to find the right roles and companies, with 5 matched positions researched and full application support included</li>
+              <li>Multiple mock interviews with detailed, role-specific feedback each time</li>
+              <li>3 coffee meetings with professionals from my industry network in Denmark</li>
+              <li>Networking coaching covering LinkedIn outreach, how to approach people in Denmark, and building lasting professional relationships</li>
+              <li>Danish workplace culture guidance on communication style, expectations, and day-to-day work norms</li>
+              <li>Unlimited support between sessions by email and message</li>
+              <li>Regular accountability check-ins to keep you moving forward</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline btn-full">Get Started</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- c. 1-1 Consulting -->
+      <div class="tab-panel hidden" id="panel-consulting">
+        <div class="consulting-grid">
+
+          <div class="card consulting-card">
+            <div class="consulting-top">
+              <h3>Profile Review &amp; CV/LinkedIn Optimisation</h3>
+              <span class="price-badge">300 DKK</span>
+            </div>
+            <ul class="include-list">
+              <li>Detailed assessment of your skills, experience, interests, and transferable competencies</li>
+              <li>Full CV rewrite and LinkedIn optimisation tailored for Danish employers and recruiters</li>
+            </ul>
+            <div class="discount-note">
+              💡 Add <strong>Target Strategy & Network Access</strong> to this session and pay only <strong>200 DKK</strong> for it.
+            </div>
+          </div>
+
+          <div class="card consulting-card">
+            <div class="consulting-top">
+              <h3>Target Strategy &amp; Network Access</h3>
+              <span class="price-badge">300 DKK</span>
+            </div>
+            <ul class="include-list">
+              <li>Identify and approach 1–3 consulting firms that match your profile and career goals</li>
+              <li>Craft strong unsolicited applications to your target companies</li>
+              <li>Exposure through our recruiter and firm network in Denmark</li>
+            </ul>
+            <div class="discount-note">
+              💡 Already booked <strong>Profile Review &amp; CV/LinkedIn Optimisation</strong>? This session is <strong>200 DKK</strong> for you.
+            </div>
+          </div>
+
+          <div class="card consulting-card">
+            <div class="consulting-top">
+              <h3>Interview Preparation</h3>
+              <span class="price-badge">300 DKK</span>
+            </div>
+            <ul class="include-list">
+              <li>Mock interviews with personalised feedback after each session</li>
+              <li>Covers both case and fit interview formats to help you perform at your best</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -74,69 +158,291 @@ import Layout from '../../layouts/Layout.astro';
   <section class="cta-section">
     <div class="container" style="text-align: center;">
       <h2>Ready to Take the Next Step?</h2>
-      <p style="color: rgba(255,255,255,0.85); font-size: 1.25rem; margin: 1rem auto 2rem; max-width: 500px;">
+      <p style="color: rgba(255,255,255,0.85); font-size: 1.125rem; margin: 1rem auto 2rem; max-width: 500px;">
         Let's build a plan to land your dream role in Denmark.
       </p>
-      <a href="/#contact" class="btn btn-white">Get Started</a>
+      <a href="/contact" class="btn btn-white">Get Started</a>
     </div>
   </section>
 </Layout>
 
+<script is:inline>
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = this.getAttribute('data-tab');
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.add('hidden'); });
+      this.classList.add('active');
+      document.getElementById('panel-' + target).classList.remove('hidden');
+    });
+  });
+
+  // Card focus on click
+  document.querySelectorAll('.program-card').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      var grid = document.querySelector('.programs-grid');
+      document.querySelectorAll('.program-card').forEach(function(c) { c.classList.remove('card-selected'); });
+      this.classList.add('card-selected');
+      grid.classList.add('has-selection');
+      // Remove focus from whatever element was clicked inside the card
+      if (document.activeElement) { document.activeElement.blur(); }
+    });
+  });
+</script>
+
 <style>
-  .program-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+  /* ── Tab strip ── */
+  .tab-strip {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 4.5rem;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
   }
 
-  .program-step {
-    padding: 2rem;
-    position: relative;
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    justify-content: center;
   }
 
-  .step-badge {
+  .tab-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
-    color: white;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 1.25rem;
-  }
-
-  .program-step h3 {
-    margin-bottom: 0.75rem;
-    font-size: 1.125rem;
-  }
-
-  .program-step p {
-    color: var(--color-secondary);
+    gap: 0.5rem;
+    padding: 1rem 1.75rem;
     font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--color-secondary);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    margin-bottom: -1px;
   }
 
+  .tab-btn:hover {
+    color: var(--color-primary);
+    background: var(--color-bg-soft);
+  }
+
+  .tab-btn.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    background: transparent;
+  }
+
+  /* ── Panels ── */
+  .hidden { display: none; }
+
+  /* ── Empty / coming soon ── */
+  .empty-state {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3.5rem 2rem;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .empty-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .empty-state h3 { margin-bottom: 0.75rem; }
+  .empty-state p { color: var(--color-text-light); font-size: 0.9375rem; }
+  .empty-state a { color: var(--color-accent); font-weight: 600; }
+
+  /* ── Programs grid ── */
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .program-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .program-card.card-selected {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.25), var(--shadow-xl);
+  }
+
+  .card-featured {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.25), var(--shadow-xl);
+  }
+
+  .card-featured.card-selected {
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.25), var(--shadow-xl);
+  }
+
+  /* When another card is selected, unfocus the featured card */
+  .programs-grid.has-selection .card-featured:not(.card-selected) {
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Remove focus outline from Get Started buttons inside cards */
+  .program-card .btn:focus {
+    outline: none;
+  }
+
+  .featured-ribbon {
+    position: absolute;
+    top: -0.65rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 1rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  .card-top { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .duration-badge {
+    display: inline-block;
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  .program-card h3 { font-size: 1.25rem; margin: 0; }
+
+  .tagline { color: var(--color-text-light); font-size: 0.9rem; line-height: 1.5; margin: 0; }
+
+  .divider { height: 1px; background: var(--color-border); }
+
+  .includes-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    margin: 0;
+  }
+
+  .includes-prev {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    background: var(--color-accent-light);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+  }
+
+  .btn-full { width: 100%; margin-top: auto; }
+
+  /* ── Consulting grid ── */
+  .consulting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .consulting-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .consulting-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .consulting-top h3 { font-size: 1.125rem; margin: 0; }
+
+  .price-badge {
+    display: inline-block;
+    width: fit-content;
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+  }
+
+  /* ── Shared list ── */
+  .include-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .include-list li {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .include-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  /* ── Discount note ── */
+  .discount-note {
+    background: var(--color-accent-light);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    line-height: 1.5;
+    margin-top: auto;
+  }
+
+  /* ── CTA ── */
   .cta-section {
     padding: 5rem 0;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0e7490 100%);
     color: white;
   }
 
-  .cta-section h2 {
-    color: white;
-  }
+  .cta-section h2 { color: white; }
 
+  /* ── Responsive ── */
   @media (max-width: 1024px) {
-    .program-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .programs-grid, .consulting-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 640px) {
-    .program-grid {
-      grid-template-columns: 1fr;
-    }
+    .programs-grid, .consulting-grid { grid-template-columns: 1fr; }
+    .tab-btn { padding: 0.75rem 1rem; font-size: 0.8125rem; }
   }
 </style>

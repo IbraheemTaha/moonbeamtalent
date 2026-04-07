@@ -4,7 +4,7 @@ export const site = {
   description: "Helping startups and scale-ups build diverse, high-performing teams across Europe, North America, and India.",
   phone: "+45 52 64 75 46",
   email: "nivedita.mishra@moonbeamtalent.dk",
-  address: "Åparken 4, 7.1 Aalborg 9000",
+  address: "Møllegade 11A, 9000 Aalborg",
   linkedin: "https://www.linkedin.com/in/mishranivedita/",
   footerDescription: "Taking your tech recruiting to the next level",
   heroCta: "Let's talk",

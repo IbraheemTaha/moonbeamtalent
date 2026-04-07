@@ -7,7 +7,7 @@ import { site } from '../data/site';
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/" class="footer-logo">
-          <span>🌙</span> Moonbeam Talent
+          <img src="/img/logos/moonbeam-light.svg" alt="Moonbeam Talent" class="footer-logo-img" />
         </a>
         <p>{site.footerDescription}</p>
         <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="LinkedIn">
@@ -19,8 +19,8 @@ import { site } from '../data/site';
         <h4>Services</h4>
         <ul>
           <li><a href="/services">Overview</a></li>
-          <li><a href="/services/business">For Businesses</a></li>
-          <li><a href="/services/talent">For Professionals</a></li>
+          <li><a href="/services/business">For Business</a></li>
+          <li><a href="/services/talent">For Job Seekers</a></li>
         </ul>
       </div>
 
@@ -36,7 +36,7 @@ import { site } from '../data/site';
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="#" class="copy-btn" data-copy={site.email} data-label="Email">{site.email}</a></li>
+          <li><a href="#" class="copy-btn" data-copy={site.email} data-label="Email">Nivedita Mishra</a></li>
           <li><a href="#" class="copy-btn" data-copy={site.phone} data-label="Phone number">{site.phone}</a></li>
           <li>{site.address}</li>
         </ul>
@@ -46,6 +46,7 @@ import { site } from '../data/site';
     <div class="footer-bottom">
       <p>&copy; <span id="footer-year"></span> Moonbeam Talent. All rights reserved.</p>
       <script is:inline>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+      <p>made with❤️by <a href="https://www.ibraheemtaha.com" target="_blank" rel="noopener noreferrer">Ibraheem Taha</a></p>
       <a href="/privacy-policy">Privacy Policy</a>
     </div>
   </div>
@@ -70,7 +71,7 @@ import { site } from '../data/site';
 
 <style>
   .footer {
-    background: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #0e4f6b 100%);
     color: rgba(255, 255, 255, 0.8);
     padding: 2.5rem 0 1.5rem;
   }
@@ -85,12 +86,15 @@ import { site } from '../data/site';
   .footer-logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--color-white);
-    font-size: 1.25rem;
-    font-weight: 700;
     text-decoration: none;
     margin-bottom: 0.35rem;
+  }
+
+  .footer-logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.5));
   }
 
   .footer-social {

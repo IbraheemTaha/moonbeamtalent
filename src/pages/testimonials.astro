@@ -1,6 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { testimonials } from '../data/testimonials';
+
+const business = [...testimonials]
+  .filter(t => t.type === 'business')
+  .sort((a, b) => a.text.length - b.text.length);
+
+const talent = [...testimonials]
+  .filter(t => t.type === 'talent')
+  .sort((a, b) => a.text.length - b.text.length);
+
+const bCol1 = business.filter((_, i) => i % 2 === 0);
+const bCol2 = business.filter((_, i) => i % 2 === 1);
+const tCol1 = talent.filter((_, i) => i % 2 === 0);
+const tCol2 = talent.filter((_, i) => i % 2 === 1);
 ---
 
 <Layout title="Testimonials" description="What people say about working with Nivedita Mishra and Moonbeam Talent.">
@@ -8,70 +21,258 @@ import { testimonials } from '../data/testimonials';
     <div class="container">
       <span class="label" style="color: rgba(255,255,255,0.7);">Testimonials</span>
       <h1>What People Say</h1>
-      <p>Hear from the professionals and hiring managers Nivedita has worked with.</p>
+      <p>Hear from the hiring managers and professionals Nivedita has worked with.</p>
+    </div>
+  </div>
+
+  <!-- Tab strip -->
+  <div class="tab-strip">
+    <div class="container">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="business">
+          💼 Trusted by Businesses
+        </button>
+        <button class="tab-btn" data-tab="talent">
+          🎯 Talent Stories
+        </button>
+      </div>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
-      <div class="testimonials-full-grid">
-        {testimonials.map((t, i) => (
-          <div class="testimonial-full card" id={`testimonial-${i + 1}`}>
-            <div class="testimonial-header">
-              <div class="author-avatar">
-                {t.name.split(' ').map(n => n[0]).join('')}
+
+      <!-- Business panel -->
+      <div class="tab-panel" id="panel-business">
+        <div class="masonry-grid">
+          <div class="masonry-col">
+            {bCol1.map((t) => (
+              <div class="testimonial-card card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">{t.text}</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar">{t.name.split(' ').map((n: string) => n[0]).join('')}</div>
+                  <div>
+                    <div class="author-name">{t.name}</div>
+                    <div class="author-role">{t.role} · {t.company}</div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <div class="author-name">{t.name}</div>
-                <div class="author-role">{t.role} @ {t.company}</div>
-              </div>
-            </div>
-            <div class="quote-icon">"</div>
-            <p class="testimonial-text">{t.text}</p>
+            ))}
           </div>
-        ))}
+          <div class="masonry-col">
+            {bCol2.map((t) => (
+              <div class="testimonial-card card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">{t.text}</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar">{t.name.split(' ').map((n: string) => n[0]).join('')}</div>
+                  <div>
+                    <div class="author-name">{t.name}</div>
+                    <div class="author-role">{t.role} · {t.company}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      <!-- Talent panel -->
+      <div class="tab-panel hidden" id="panel-talent">
+        {talent.length === 0 ? (
+          <div class="empty-state">
+            <span class="empty-icon">🎯</span>
+            <p>Testimonials from job seekers coming soon.</p>
+          </div>
+        ) : (
+          <div class="masonry-grid">
+            <div class="masonry-col">
+              {tCol1.map((t) => (
+                <div class="testimonial-card card">
+                  <div class="quote-mark">"</div>
+                  <p class="testimonial-text">{t.text}</p>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">{t.name.split(' ').map((n: string) => n[0]).join('')}</div>
+                    <div>
+                      <div class="author-name">{t.name}</div>
+                      <div class="author-role">{t.role} · {t.company}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="masonry-col">
+              {tCol2.map((t) => (
+                <div class="testimonial-card card">
+                  <div class="quote-mark">"</div>
+                  <p class="testimonial-text">{t.text}</p>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">{t.name.split(' ').map((n: string) => n[0]).join('')}</div>
+                    <div>
+                      <div class="author-name">{t.name}</div>
+                      <div class="author-role">{t.role} · {t.company}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
     </div>
   </section>
 </Layout>
 
+<script is:inline>
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = this.getAttribute('data-tab');
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.add('hidden'); });
+      this.classList.add('active');
+      document.getElementById('panel-' + target).classList.remove('hidden');
+    });
+  });
+</script>
+
 <style>
-  .testimonials-full-grid {
+  /* ── Tab strip ── */
+  .tab-strip {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 4.5rem;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+  }
+
+  .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--color-secondary);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    margin-bottom: -1px;
+  }
+
+  .tab-btn:hover {
+    color: var(--color-primary);
+    background: var(--color-bg-soft);
+  }
+
+  .tab-btn.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    background: transparent;
+  }
+
+  .tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--color-bg-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+  }
+
+  .tab-btn.active .tab-count {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+  }
+
+  /* ── Panels ── */
+  .hidden { display: none; }
+
+  /* ── Masonry grid ── */
+  .masonry-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
+    align-items: start;
   }
 
-  .testimonial-full {
-    padding: 2.5rem;
+  .masonry-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 0;
   }
 
-  .testimonial-header {
+  /* ── Card ── */
+  .testimonial-card {
+    padding: 2rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .quote-mark {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--color-accent);
+    font-family: Georgia, serif;
+  }
+
+  .testimonial-text {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    flex: 1;
+  }
+
+  .testimonial-author {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
   }
 
   .author-avatar {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     flex-shrink: 0;
   }
 
   .author-name {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: var(--color-primary);
   }
 
@@ -80,23 +281,22 @@ import { testimonials } from '../data/testimonials';
     color: var(--color-text-light);
   }
 
-  .quote-icon {
+  /* ── Empty state ── */
+  .empty-state {
+    text-align: center;
+    padding: 5rem 0;
+    color: var(--color-text-light);
+  }
+
+  .empty-icon {
     font-size: 3rem;
-    line-height: 1;
-    color: var(--color-accent);
-    font-family: Georgia, serif;
-    margin-bottom: 0.5rem;
+    display: block;
+    margin-bottom: 1rem;
   }
 
-  .testimonial-text {
-    color: var(--color-secondary);
-    font-size: 0.9375rem;
-    line-height: 1.8;
-  }
-
+  /* ── Responsive ── */
   @media (max-width: 768px) {
-    .testimonials-full-grid {
-      grid-template-columns: 1fr;
-    }
+    .masonry-grid { grid-template-columns: 1fr; }
+    .tab-btn { padding: 0.875rem 1.25rem; font-size: 0.875rem; }
   }
 </style>

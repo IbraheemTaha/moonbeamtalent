@@ -16,29 +16,32 @@ import Layout from '../../layouts/Layout.astro';
       <div class="services-grid">
         <div class="service-detail card">
           <div class="service-icon-lg">🔍</div>
-          <h3>IT Recruitment</h3>
-          <br/>
-          <p>
-            In addition to recruitment, I offer tailored onboarding services to help internationals and their families settle smoothly in Denmark. From CPR registration, housing, schools, and cultural immersion to spousal integration and networking support, I make the transition faster and more effective—improving early performance and retention.
-          </p>
-          <a href="/services/business" class="btn btn-outline">Learn More</a>
-        </div>
-
-        <div class="service-detail card">
-          <div class="service-icon-lg">🏠</div>
-          <h3>Onboarding Support</h3>
-          <p>
-            In addition to recruitment, I offer tailored onboarding services to help internationals and their families settle smoothly in Denmark. From CPR registration, housing, schools, and cultural immersion to spousal integration and networking support, I make the transition faster and more effective—improving early performance and retention.
-          </p>
+          <h3>Recruitment</h3>
+          <ul class="service-bullets">
+            <li>Tailored onboarding support for internationals and their families moving to Denmark</li>
+            <li>Help with practical setup such as CPR registration, housing, and schools</li>
+            <li>Support with cultural integration and settling into life in Denmark</li>
+            <li>Guidance for spouses, including integration and support</li>
+            <li>A smoother transition that helps new hires settle in faster</li>
+            <li>Better early performance, engagement, and long-term retention</li>
+          </ul>
+          <p class="card-cta-text">Ready to find the talent your team needs? Let's make it happen.</p>
+          <a href="/services/business" class="btn btn-outline">Start Hiring →</a>
         </div>
 
         <div class="service-detail card">
           <div class="service-icon-lg">🎯</div>
-          <h3>Career Coaching for Internationals</h3>
-          <p>
-            I also provide personalized career coaching for individuals navigating the Danish job market. This includes CV and LinkedIn optimization, interview preparation, and targeted company outreach, along with access to my network—empowering internationals to showcase their skills, find opportunities, and succeed with confidence.
-          </p>
-          <a href="/services/talent" class="btn btn-outline">Learn More</a>
+          <h3>Career Consulting</h3>
+          <ul class="service-bullets">
+            <li>Personalized career coaching for professionals navigating the Danish job market</li>
+            <li>Support with CV and LinkedIn optimization to improve visibility and impact</li>
+            <li>Interview preparation tailored to the Danish hiring market</li>
+            <li>Guidance on targeted company outreach and job search strategy</li>
+            <li>Access to relevant network connections and insights</li>
+            <li>Helping internationals present their skills clearly and succeed with confidence</li>
+          </ul>
+          <p class="card-cta-text">Your next career move starts here. Let's get you there.</p>
+          <a href="/services/talent" class="btn btn-outline">Advance Your Career →</a>
         </div>
       </div>
     </div>
@@ -89,8 +92,8 @@ import Layout from '../../layouts/Layout.astro';
         Let's discuss how Moonbeam Talent can help you find the right people.
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="/services/business" class="btn btn-outline" style="color: white; border-color: white;">For Businesses</a>
-        <a href="/services/talent" class="btn btn-outline" style="color: white; border-color: white;">For Professionals</a>
+        <a href="/services/business" class="btn btn-outline" style="color: white; border-color: white;">For Business</a>
+        <a href="/services/talent" class="btn btn-outline" style="color: white; border-color: white;">For Job Seekers</a>
       </div>
     </div>
   </section>
@@ -99,8 +102,10 @@ import Layout from '../../layouts/Layout.astro';
 <style>
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    max-width: 860px;
+    margin: 0 auto;
   }
 
   .service-detail {
@@ -121,6 +126,37 @@ import Layout from '../../layouts/Layout.astro';
     color: var(--color-secondary);
     margin-bottom: 1.25rem;
     font-size: 0.9375rem;
+  }
+
+  .service-bullets {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .service-bullets li {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .service-bullets li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .card-cta-text {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
   }
 
   /* Process Steps */
@@ -180,11 +216,10 @@ import Layout from '../../layouts/Layout.astro';
     color: white;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     .services-grid {
       grid-template-columns: 1fr;
-      max-width: 600px;
-      margin: 0 auto;
+      max-width: 500px;
     }
   }
 
