@@ -27,10 +27,50 @@ import Layout from '../../layouts/Layout.astro';
 
       <!-- a. Workshops -->
       <div class="tab-panel hidden" id="panel-workshops">
-        <div class="empty-state">
-          <span class="empty-icon">🎓</span>
-          <h3>Workshops Coming Soon</h3>
-          <p>We're preparing group sessions to help you navigate the Danish job market with confidence. <a href="/contact">Get in touch</a> to be notified when new sessions are announced.</p>
+        <div class="workshops-grid">
+
+          <div class="card workshop-card">
+            <div class="workshop-icon">📄</div>
+            <h3>CV Curation for the Danish Market</h3>
+            <p>Your CV is your first impression, and the Danish market has its own standards. In this hands-on workshop, you'll learn how to craft a clean, compelling CV that speaks directly to Danish employers and recruiters. We cover structure, tone, what to include (and what to leave out), and how to tailor your experience to stand out in a competitive market.</p>
+            <a href="/contact" class="btn btn-outline">Enquire Now</a>
+          </div>
+
+          <div class="card workshop-card">
+            <div class="workshop-icon">💼</div>
+            <h3>LinkedIn Profile Enhancement</h3>
+            <p>LinkedIn is where Danish recruiters search, and most profiles don't make the cut. This workshop walks you through every section of your profile with one goal: making you impossible to overlook. From your headline and summary to your experience and skills, you'll leave with a profile that attracts the right opportunities and communicates your value.</p>
+            <a href="/contact" class="btn btn-outline">Enquire Now</a>
+          </div>
+
+          <div class="card workshop-card">
+            <div class="workshop-icon">🎯</div>
+            <h3>Job Search Strategy & Targeting</h3>
+            <p>Applying to everything rarely works. This workshop teaches you how to build a focused, strategic job search, identifying the right companies, roles, and channels for your profile. You'll learn how to research the Danish market, craft targeted applications, and use unsolicited outreach to open doors that job boards never show.</p>
+            <a href="/contact" class="btn btn-outline">Enquire Now</a>
+          </div>
+
+          <div class="card workshop-card">
+            <div class="workshop-icon">🤝</div>
+            <h3>Networking the Danish Way</h3>
+            <p>Networking in Denmark looks different, it's quieter, more relationship-driven, and often the most direct route to a job offer. This workshop covers how to reach out professionally on LinkedIn, how to approach coffee meetings, and how to build a genuine network in Denmark without feeling awkward or transactional.</p>
+            <a href="/contact" class="btn btn-outline">Enquire Now</a>
+          </div>
+
+          <div class="card workshop-card">
+            <div class="workshop-icon">🗣️</div>
+            <h3>Interview Preparation & Confidence</h3>
+            <p>Danish interviews are less formal but just as demanding. This workshop prepares you for both fit and competency-based questions, teaches you how to structure confident answers, and gives you a clear sense of what Danish hiring managers are really looking for. Includes a mock interview segment with live feedback.</p>
+            <a href="/contact" class="btn btn-outline">Enquire Now</a>
+          </div>
+
+          <div class="card workshop-card">
+            <div class="workshop-icon">🌍</div>
+            <h3>Understanding Danish Workplace Culture</h3>
+            <p>Getting hired is one thing, thriving is another. This workshop gives you a practical guide to Danish workplace culture: flat hierarchies, direct communication, work-life balance, and unspoken norms that can shape your integration. Essential for anyone transitioning into a Danish work environment.</p>
+            <a href="/contact" class="btn btn-outline">Enquire Now</a>
+          </div>
+
         </div>
       </div>
 
@@ -47,7 +87,7 @@ import Layout from '../../layouts/Layout.astro';
             <div class="divider"></div>
             <p class="includes-title">What's included:</p>
             <ul class="include-list">
-              <li>4 × 1:1 coaching sessions covering your profile, interests, and skills so you get a realistic picture of where you stand in the Danish job market and how to pitch yourself with confidence</li>
+              <li>4 × 1-1 coaching sessions covering your profile, interests, and skills so you get a realistic picture of where you stand in the Danish job market and how to pitch yourself with confidence</li>
               <li>CV review and optimisation tailored for the Danish market</li>
               <li>LinkedIn profile enhancement for visibility and recruiter appeal</li>
               <li>A personalised cover letter template you can adapt for each application</li>
@@ -69,7 +109,7 @@ import Layout from '../../layouts/Layout.astro';
             <p class="includes-title">What's included:</p>
             <p class="includes-prev">Everything from <strong>Essential Launch</strong>, plus:</p>
             <ul class="include-list">
-              <li>6 × 1:1 coaching sessions, held weekly to keep your momentum going</li>
+              <li>6 × 1-1 coaching sessions, held weekly to keep your momentum going</li>
               <li>A personalised job search strategy with 3 matched roles researched for your profile, then hands-on support through the full application process</li>
               <li>Mock interview with tailored feedback whenever you get shortlisted</li>
               <li>Application review for multiple roles within the 6 weeks</li>
@@ -88,7 +128,7 @@ import Layout from '../../layouts/Layout.astro';
             <p class="includes-title">What's included:</p>
             <p class="includes-prev">Everything in the first <strong>2 packages</strong>, plus:</p>
             <ul class="include-list">
-              <li>10 × 1:1 sessions covering strategy, mindset, interview preparation, and networking</li>
+              <li>10 × 1-1 sessions covering strategy, mindset, interview preparation, and networking</li>
               <li>Full rewrite of your CV, LinkedIn, and multiple tailored cover letters</li>
               <li>Job market mapping to find the right roles and companies, with 5 matched positions researched and full application support included</li>
               <li>Multiple mock interviews with detailed, role-specific feedback each time</li>
@@ -117,9 +157,6 @@ import Layout from '../../layouts/Layout.astro';
               <li>Detailed assessment of your skills, experience, interests, and transferable competencies</li>
               <li>Full CV rewrite and LinkedIn optimisation tailored for Danish employers and recruiters</li>
             </ul>
-            <div class="discount-note">
-              💡 Add <strong>Target Strategy & Network Access</strong> to this session and pay only <strong>200 DKK</strong> for it.
-            </div>
           </div>
 
           <div class="card consulting-card">
@@ -132,9 +169,6 @@ import Layout from '../../layouts/Layout.astro';
               <li>Craft strong unsolicited applications to your target companies</li>
               <li>Exposure through our recruiter and firm network in Denmark</li>
             </ul>
-            <div class="discount-note">
-              💡 Already booked <strong>Profile Review &amp; CV/LinkedIn Optimisation</strong>? This session is <strong>200 DKK</strong> for you.
-            </div>
           </div>
 
           <div class="card consulting-card">
@@ -149,6 +183,12 @@ import Layout from '../../layouts/Layout.astro';
           </div>
 
         </div>
+
+        <div class="bundle-card card">
+          <span class="bundle-label">Bundle Offer</span>
+          <p>Book <strong>Profile Review &amp; CV/LinkedIn Optimisation</strong> and <strong>Target Strategy &amp; Network Access</strong> together for just <strong>500 DKK</strong>.</p>
+        </div>
+
       </div>
 
     </div>
@@ -254,12 +294,69 @@ import Layout from '../../layouts/Layout.astro';
   .empty-state p { color: var(--color-text-light); font-size: 0.9375rem; }
   .empty-state a { color: var(--color-accent); font-weight: 600; }
 
+  /* ── Workshops grid ── */
+  .workshops-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .workshop-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    height: 100%;
+  }
+
+  .workshop-icon {
+    font-size: 2rem;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--color-accent-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .workshop-card h3 {
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  .workshop-card p {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+
+  .workshop-card .btn {
+    margin-top: auto;
+    width: fit-content;
+  }
+
+  @media (max-width: 1024px) {
+    .workshops-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .workshops-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── Programs grid ── */
   .programs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    align-items: start;
+    align-items: stretch;
   }
 
   .program-card {
@@ -270,6 +367,7 @@ import Layout from '../../layouts/Layout.astro';
     position: relative;
     cursor: pointer;
     outline: none;
+    height: 100%;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
@@ -359,7 +457,7 @@ import Layout from '../../layouts/Layout.astro';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    align-items: start;
+    align-items: stretch;
   }
 
   .consulting-card {
@@ -368,6 +466,7 @@ import Layout from '../../layouts/Layout.astro';
     flex-direction: column;
     gap: 1rem;
     min-width: 0;
+    height: 100%;
   }
 
   .consulting-top {
@@ -387,6 +486,36 @@ import Layout from '../../layouts/Layout.astro';
     font-weight: 700;
     padding: 0.25rem 0.75rem;
     border-radius: 999px;
+  }
+
+  /* ── Bundle card ── */
+  .bundle-card {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    background: var(--color-accent-light);
+    border: 1px solid var(--color-accent);
+  }
+
+  .bundle-label {
+    display: inline-block;
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+
+  .bundle-card p {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0;
   }
 
   /* ── Shared list ── */

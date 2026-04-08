@@ -11,14 +11,6 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="intro-text">
-        <p>Whether you need one key hire or a dedicated partner to scale your team, Moonbeam offers flexible recruitment solutions tailored to your business goals.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- End-to-End Talent Search -->
   <section class="section-alt">
     <div class="container">
@@ -65,26 +57,10 @@ import Layout from '../../layouts/Layout.astro';
         </div>
 
         <div class="pricing-card card">
-          <span class="label">Pricing</span>
-          <div class="price">50,000–60,000 DKK</div>
-          <p class="price-note">depending on role level</p>
-
-          <div class="price-breakdown">
-            <div class="price-row">
-              <span>Upfront</span>
-              <strong>25%</strong>
-            </div>
-            <div class="price-row">
-              <span>Upon hire</span>
-              <strong>75%</strong>
-            </div>
-          </div>
-
           <div class="price-addon">
-            <h4>Additional Service</h4>
-            <p>Structured Interview Templates &amp; Scorecards</p>
-            <strong>5,000 DKK</strong>
-            <p class="addon-note">Designed to reduce bias, empower hiring managers, and ensure a consistent, inclusive candidate experience.</p>
+            <h4>Optional Add-On Services</h4>
+            <p class="price-note">Elevate your hiring process with tailored tools and support designed to create better interviews, stronger decisions, and a more inclusive candidate experience.</p>
+            <p class="price-note">Structured Interview Templates &amp; Scorecards for consistent, inclusive, and bias-free hiring.</p>
           </div>
 
           <a href="/contact" class="btn btn-outline btn-full">Get Started</a>
@@ -98,21 +74,6 @@ import Layout from '../../layouts/Layout.astro';
     <div class="container">
       <div class="offering-grid reverse">
         <div class="pricing-card card">
-          <span class="label">Pricing</span>
-          <div class="price">From 50,000 DKK</div>
-          <p class="price-note">per month (3–6 month engagement)</p>
-
-          <div class="price-breakdown">
-            <div class="price-row">
-              <span>Model</span>
-              <strong>Monthly</strong>
-            </div>
-            <div class="price-row">
-              <span>Hires</span>
-              <strong>Unlimited</strong>
-            </div>
-          </div>
-
           <p class="price-note">Pricing is based on the number of roles, seniority levels, and scope of support.</p>
 
           <a href="/contact" class="btn btn-outline btn-full">Get Started</a>
@@ -186,14 +147,6 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .intro-text {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.125rem;
-    color: var(--color-secondary);
-  }
-
   .offering-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -301,6 +254,13 @@ import Layout from '../../layouts/Layout.astro';
     font-size: 0.875rem;
     color: var(--color-secondary);
     margin-bottom: 0.25rem;
+  }
+
+  .addon-intro {
+    font-size: 0.875rem !important;
+    color: var(--color-secondary) !important;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
   }
 
   .addon-note {

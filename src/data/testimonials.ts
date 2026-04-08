@@ -56,6 +56,7 @@ export const testimonials = [
 
   {
     type: "talent",
+    category: "Workshop",
     name: "Magdalena Preiss",
     role: "Project Coordinator",
     company: "Aalborg University",
@@ -64,10 +65,11 @@ export const testimonials = [
 
   {
     type: "talent",
+    category: "1-1 Consulting",
     name: "Ibraheem Taha",
     role: "AI & Data Infrastructure Engineer",
     company: "Aalborg University",
-    text: "It was an incredible and exciting opportunity to see job searching and CV writing from a different perspective. I’m so happy I attended this workshop. Thank you, Nivedita. I’m already looking forward to the next one 🙌"
+    text: "The 1-1 CV improvement session gave me a completely new perspective on job searching and how to present my experience more effectively. It was incredibly valuable, and I left with clear, actionable feedback I could use right away.🙌"
   },
 
 ];
