@@ -25,25 +25,43 @@ const tCol2 = talent.filter((_, i) => i % 2 === 1);
     </div>
   </div>
 
-  <!-- Tab strip -->
-  <div class="tab-strip">
+  <!-- Testimonial navigation -->
+  <nav class="testimonial-nav-wrap" aria-label="Testimonial categories">
     <div class="container">
-      <div class="tab-nav">
-        <button class="tab-btn active" data-tab="business">
-          💼 Trusted by Businesses
-        </button>
-        <button class="tab-btn" data-tab="talent">
-          🎯 Talent Stories
-        </button>
+      <div class="testimonial-nav">
+        <a class="testimonial-nav-link active" href="#business-stories" data-testimonial-link aria-current="true">
+          <span class="testimonial-nav-text">
+            <strong>
+              <span class="nav-title-full">💼 Trusted by Businesses</span>
+              <span class="nav-title-short">Businesses</span>
+            </strong>
+            <small>{business.length} hiring partner stories</small>
+          </span>
+        </a>
+        <a class="testimonial-nav-link" href="#talent-stories" data-testimonial-link>
+          <span class="testimonial-nav-text">
+            <strong>
+              <span class="nav-title-full">🎯 Talent Stories</span>
+              <span class="nav-title-short">Talent</span>
+            </strong>
+            <small>{talent.length} job seeker stories</small>
+          </span>
+        </a>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <section class="section">
-    <div class="container">
+  <section class="section testimonials-section">
+    <div class="container testimonials-stack">
 
-      <!-- Business panel -->
-      <div class="tab-panel" id="panel-business">
+      <!-- Business stories -->
+      <div class="testimonial-panel" id="business-stories" data-testimonial-section>
+        <div class="section-header testimonial-section-header">
+          <span class="label">💼 Trusted by Businesses</span>
+          <h2>Recruitment partnerships built on clarity, care, and strong hires.</h2>
+          <p>Hiring managers, founders, and people teams share what it is like to work with Nivedita.</p>
+        </div>
+
         <div class="masonry-grid">
           <div class="masonry-col">
             {bCol1.map((t) => (
@@ -76,8 +94,14 @@ const tCol2 = talent.filter((_, i) => i % 2 === 1);
         </div>
       </div>
 
-      <!-- Talent panel -->
-      <div class="tab-panel hidden" id="panel-talent">
+      <!-- Talent stories -->
+      <div class="testimonial-panel" id="talent-stories" data-testimonial-section>
+        <div class="section-header testimonial-section-header">
+          <span class="label">🎯 Talent Stories</span>
+          <h2>Practical career support that helps professionals move forward.</h2>
+          <p>Job seekers share the feedback, confidence, and direction they took from Moonbeam Talent.</p>
+        </div>
+
         {talent.length === 0 ? (
           <div class="empty-state">
             <span class="empty-icon">🎯</span>
@@ -126,83 +150,144 @@ const tCol2 = talent.filter((_, i) => i % 2 === 1);
 </Layout>
 
 <script is:inline>
-  document.querySelectorAll('.tab-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var target = this.getAttribute('data-tab');
-      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-      document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.add('hidden'); });
-      this.classList.add('active');
-      document.getElementById('panel-' + target).classList.remove('hidden');
+  const testimonialLinks = Array.from(document.querySelectorAll('[data-testimonial-link]'));
+  const testimonialSections = Array.from(document.querySelectorAll('[data-testimonial-section]'));
+
+  function setActiveTestimonialSection(id) {
+    testimonialLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === '#' + id;
+      link.classList.toggle('active', isActive);
+
+      if (isActive) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  testimonialLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.getAttribute('href')?.slice(1);
+      const target = targetId ? document.getElementById(targetId) : null;
+
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', '#' + targetId);
+      setActiveTestimonialSection(targetId);
     });
   });
+
+  const testimonialObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setActiveTestimonialSection(entry.target.id);
+      }
+    });
+  }, {
+    rootMargin: '-45% 0px -45% 0px',
+    threshold: 0,
+  });
+
+  testimonialSections.forEach((section) => testimonialObserver.observe(section));
 </script>
 
 <style>
-  /* ── Tab strip ── */
-  .tab-strip {
-    background: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
+  /* ── Testimonial navigation ── */
+  .testimonial-nav-wrap {
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
     position: sticky;
     top: 4.5rem;
     z-index: 100;
     box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
   }
 
-  .tab-nav {
-    display: flex;
-    gap: 0;
+  .testimonial-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 300px));
+    gap: 0.75rem;
     justify-content: center;
+    overflow-x: auto;
+    padding: 0.75rem 0;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
   }
 
-  .tab-btn {
-    display: inline-flex;
+  .testimonial-nav-link {
+    min-width: 0;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.75rem;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    font-family: var(--font-sans);
-    cursor: pointer;
-    border: none;
-    background: transparent;
+    justify-content: center;
+    gap: 0.875rem;
+    padding: 0.85rem 1rem;
     color: var(--color-secondary);
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s ease;
-    margin-bottom: -1px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    text-decoration: none;
+    scroll-snap-align: start;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
 
-  .tab-btn:hover {
+  .testimonial-nav-link:hover,
+  .testimonial-nav-link.active {
     color: var(--color-primary);
     background: var(--color-bg-soft);
+    border-color: rgba(8, 145, 178, 0.45);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
   }
 
-  .tab-btn.active {
-    color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-    background: transparent;
-  }
-
-  .tab-count {
-    display: inline-flex;
+  .testimonial-nav-text {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    min-width: 22px;
-    height: 22px;
-    padding: 0 6px;
-    border-radius: 999px;
-    background: var(--color-bg-muted);
-    font-size: 0.75rem;
-    font-weight: 700;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.2rem;
+    line-height: 1.25;
+  }
+
+  .testimonial-nav-text strong {
+    color: inherit;
+    font-size: 0.9375rem;
+  }
+
+  .testimonial-nav-text small {
     color: var(--color-text-light);
+    font-size: 0.78rem;
+    line-height: 1.35;
   }
 
-  .tab-btn.active .tab-count {
-    background: var(--color-accent-light);
-    color: var(--color-accent);
+  .nav-title-short {
+    display: none;
   }
 
-  /* ── Panels ── */
-  .hidden { display: none; }
+  .testimonials-section {
+    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-bg-soft) 52%, var(--color-white) 100%);
+  }
+
+  .testimonials-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+  }
+
+  .testimonial-panel {
+    scroll-margin-top: 11.5rem;
+  }
+
+  .testimonial-section-header {
+    max-width: 760px;
+  }
+
+  .testimonial-section-header h2 {
+    margin-bottom: 0;
+  }
 
   /* ── Masonry grid ── */
   .masonry-grid {
@@ -315,6 +400,70 @@ const tCol2 = talent.filter((_, i) => i % 2 === 1);
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .masonry-grid { grid-template-columns: 1fr; }
-    .tab-btn { padding: 0.875rem 1.25rem; font-size: 0.875rem; }
+
+    .testimonial-nav {
+      margin-right: -1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .testimonial-nav-link {
+      min-width: min(84vw, 340px);
+    }
+
+    .testimonials-stack {
+      gap: 5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .testimonial-nav-wrap {
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    .testimonial-nav {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem;
+      margin-right: 0;
+      overflow-x: visible;
+      padding: 0.5rem 0;
+      scroll-snap-type: none;
+    }
+
+    .testimonial-nav-text small {
+      display: none;
+    }
+
+    .nav-title-full {
+      display: none;
+    }
+
+    .nav-title-short {
+      display: inline;
+    }
+
+    .testimonial-nav-link {
+      min-width: 0;
+      justify-content: center;
+      padding: 0.65rem 0.25rem;
+      border-radius: var(--radius-sm);
+      box-shadow: none;
+      text-align: center;
+      transform: none;
+    }
+
+    .testimonial-nav-link:hover,
+    .testimonial-nav-link.active {
+      box-shadow: none;
+      transform: none;
+    }
+
+    .testimonial-nav-text strong {
+      font-size: 0.82rem;
+      line-height: 1.15;
+    }
+
+    .testimonial-panel {
+      scroll-margin-top: 8.75rem;
+    }
   }
 </style>
