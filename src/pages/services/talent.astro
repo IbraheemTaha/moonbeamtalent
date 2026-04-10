@@ -78,7 +78,9 @@ import Layout from '../../layouts/Layout.astro';
             <div class="photo-lightbox hidden" id="photo-lightbox">
               <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
               <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">&#8249;</button>
-              <img src="" alt="" id="lightbox-img" />
+              <div class="lightbox-stage" id="lightbox-stage" aria-live="polite">
+                <div class="lightbox-track" id="lightbox-track"></div>
+              </div>
               <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">&#8250;</button>
             </div>
 
@@ -302,33 +304,82 @@ Get practical insight into Danish workplace culture, communication style, and ex
 
   // Photo lightbox
   var lightbox = document.getElementById('photo-lightbox');
-  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxStage = document.getElementById('lightbox-stage');
+  var lightboxTrack = document.getElementById('lightbox-track');
   var lightboxClose = document.getElementById('lightbox-close');
   var lightboxPrev = document.getElementById('lightbox-prev');
   var lightboxNext = document.getElementById('lightbox-next');
   var photoItems = Array.from(document.querySelectorAll('.photo-item img'));
   var currentIndex = 0;
+  var slideWidth = 0;
+  var isDragging = false;
+  var dragStartX = 0;
+  var dragStartY = 0;
+  var dragStartTranslate = 0;
 
   // Move lightbox to body to escape all stacking contexts
-  document.body.appendChild(lightbox);
-
-  function showPhoto(index) {
-    if (index < 0 || index >= photoItems.length) return;
-    currentIndex = index;
-    lightboxImg.src = photoItems[currentIndex].src;
-    lightboxImg.alt = photoItems[currentIndex].alt;
-    lightboxPrev.style.visibility = currentIndex === 0 ? 'hidden' : '';
-    lightboxNext.style.visibility = currentIndex === photoItems.length - 1 ? 'hidden' : '';
+  if (lightbox) {
+    document.body.appendChild(lightbox);
   }
+
+  function clampIndex(index) {
+    return Math.max(0, Math.min(index, photoItems.length - 1));
+  }
+
+  function ensureSlides() {
+    if (!lightboxTrack) return;
+    if (lightboxTrack.children.length === photoItems.length) return;
+    lightboxTrack.innerHTML = '';
+    photoItems.forEach(function(item) {
+      var slide = document.createElement('div');
+      slide.className = 'lightbox-slide';
+      var img = document.createElement('img');
+      img.src = item.src;
+      img.alt = item.alt || '';
+      img.draggable = false;
+      slide.appendChild(img);
+      lightboxTrack.appendChild(slide);
+    });
+  }
+
+  function setTrackTransition(enabled) {
+    if (!lightboxTrack) return;
+    lightboxTrack.style.transition = enabled ? 'transform 320ms ease' : 'none';
+  }
+
+  function updateTrackPosition(index, opts) {
+    if (!lightboxTrack || !lightboxStage) return;
+    slideWidth = lightboxStage.clientWidth || slideWidth;
+    var translate = -index * slideWidth;
+    if (opts && opts.immediate) setTrackTransition(false);
+    else setTrackTransition(true);
+    lightboxTrack.style.transform = 'translateX(' + translate + 'px)';
+  }
+
+  function showPhoto(index, opts) {
+    if (photoItems.length === 0) return;
+    currentIndex = clampIndex(index);
+    updateTrackPosition(currentIndex, opts);
+    if (lightboxPrev) lightboxPrev.style.visibility = currentIndex === 0 ? 'hidden' : '';
+    if (lightboxNext) lightboxNext.style.visibility = currentIndex === photoItems.length - 1 ? 'hidden' : '';
+  }
+
   function openLightbox(index) {
-    showPhoto(index);
+    if (!lightbox) return;
+    ensureSlides();
     lightbox.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function() {
+      showPhoto(index, { immediate: true });
+      requestAnimationFrame(function() { setTrackTransition(true); });
+    });
   }
+
   function closeLightbox() {
+    if (!lightbox) return;
     lightbox.classList.add('hidden');
-    lightboxImg.src = '';
     document.body.style.overflow = '';
+    if (lightboxTrack) lightboxTrack.style.transform = '';
   }
   document.querySelectorAll('.photo-item').forEach(function(item, i) {
     item.addEventListener('click', function() { openLightbox(i); });
@@ -346,20 +397,55 @@ Get practical insight into Danish workplace culture, communication style, and ex
       if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
     });
 
-    // Swipe support
-    var touchStartX = 0;
-    var touchStartY = 0;
-    lightbox.addEventListener('touchstart', function(e) {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    lightbox.addEventListener('touchend', function(e) {
-      var dx = e.changedTouches[0].clientX - touchStartX;
-      var dy = e.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
-      if (dx < 0) showPhoto(currentIndex + 1);
-      else showPhoto(currentIndex - 1);
-    }, { passive: true });
+    window.addEventListener('resize', function() {
+      if (!lightbox.classList.contains('hidden')) {
+        updateTrackPosition(currentIndex, { immediate: true });
+      }
+    });
+
+    // Swipe support with smooth drag
+    if (lightboxStage) {
+      lightboxStage.addEventListener('touchstart', function(e) {
+        if (!lightboxTrack) return;
+        isDragging = true;
+        dragStartX = e.touches[0].clientX;
+        dragStartY = e.touches[0].clientY;
+        slideWidth = lightboxStage.clientWidth || slideWidth;
+        dragStartTranslate = -currentIndex * slideWidth;
+        setTrackTransition(false);
+      }, { passive: true });
+
+      lightboxStage.addEventListener('touchmove', function(e) {
+        if (!isDragging || !lightboxTrack) return;
+        var dx = e.touches[0].clientX - dragStartX;
+        var dy = e.touches[0].clientY - dragStartY;
+        if (Math.abs(dx) < Math.abs(dy)) return;
+        e.preventDefault();
+        var translate = dragStartTranslate + dx;
+        var atStart = currentIndex === 0 && dx > 0;
+        var atEnd = currentIndex === photoItems.length - 1 && dx < 0;
+        if (atStart || atEnd) {
+          translate = dragStartTranslate + dx * 0.35;
+        }
+        lightboxTrack.style.transform = 'translateX(' + translate + 'px)';
+      }, { passive: false });
+
+      lightboxStage.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var dx = e.changedTouches[0].clientX - dragStartX;
+        var threshold = slideWidth * 0.18;
+        if (dx < -threshold) showPhoto(currentIndex + 1);
+        else if (dx > threshold) showPhoto(currentIndex - 1);
+        else showPhoto(currentIndex);
+      }, { passive: true });
+
+      lightboxStage.addEventListener('touchcancel', function() {
+        if (!isDragging) return;
+        isDragging = false;
+        showPhoto(currentIndex);
+      }, { passive: true });
+    }
   }
 
   // Tab switching
@@ -579,7 +665,7 @@ Get practical insight into Danish workplace culture, communication style, and ex
   }
 
   /* ── Lightbox ── */
-  .photo-lightbox {
+  :global(.photo-lightbox) {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.85);
@@ -590,19 +676,49 @@ Get practical insight into Danish workplace culture, communication style, and ex
     padding: 2rem;
   }
 
-  .photo-lightbox.hidden {
+  :global(.photo-lightbox.hidden) {
     display: none;
   }
 
-  .photo-lightbox img {
-    max-width: 90vw;
-    max-height: 85vh;
+  :global(.lightbox-stage) {
+    width: 90vw;
+    max-width: 1100px;
+    height: 85vh;
+    max-height: 680px;
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+    touch-action: pan-y;
+  }
+
+  :global(.lightbox-track) {
+    display: flex;
+    height: 100%;
+    flex-wrap: nowrap;
+    transition: transform 320ms ease;
+    will-change: transform;
+  }
+
+  :global(.lightbox-slide) {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  :global(.lightbox-slide img) {
+    max-width: 100%;
+    max-height: 100%;
     border-radius: var(--radius-lg);
     box-shadow: 0 16px 64px rgba(0,0,0,0.5);
     object-fit: contain;
+    user-select: none;
   }
 
-  .lightbox-nav {
+  :global(.lightbox-nav) {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -622,14 +738,14 @@ Get practical insight into Danish workplace culture, communication style, and ex
     z-index: 1;
   }
 
-  .lightbox-nav:hover {
+  :global(.lightbox-nav:hover) {
     background: rgba(255,255,255,0.3);
   }
 
-  .lightbox-prev { left: 1.5rem; }
-  .lightbox-next { right: 1.5rem; }
+  :global(.lightbox-prev) { left: 1.5rem; }
+  :global(.lightbox-next) { right: 1.5rem; }
 
-  .lightbox-close {
+  :global(.lightbox-close) {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -645,9 +761,10 @@ Get practical insight into Danish workplace culture, communication style, and ex
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
+    z-index: 2;
   }
 
-  .lightbox-close:hover {
+  :global(.lightbox-close:hover) {
     background: rgba(255,255,255,0.3);
   }
 
