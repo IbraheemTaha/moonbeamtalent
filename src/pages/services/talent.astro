@@ -345,6 +345,21 @@ Get practical insight into Danish workplace culture, communication style, and ex
       if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
       if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
     });
+
+    // Swipe support
+    var touchStartX = 0;
+    var touchStartY = 0;
+    lightbox.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
+      if (dx < 0) showPhoto(currentIndex + 1);
+      else showPhoto(currentIndex - 1);
+    }, { passive: true });
   }
 
   // Tab switching
