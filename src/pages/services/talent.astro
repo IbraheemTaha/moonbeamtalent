@@ -302,6 +302,9 @@ Get practical insight into Danish workplace culture, communication style, and ex
   var lightbox = document.getElementById('photo-lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
   var lightboxClose = document.getElementById('lightbox-close');
+  // Move lightbox to body to escape all stacking contexts
+  document.body.appendChild(lightbox);
+
   function openLightbox(src, alt) {
     lightboxImg.src = src;
     lightboxImg.alt = alt;
