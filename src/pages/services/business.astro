@@ -57,6 +57,7 @@ import Layout from '../../layouts/Layout.astro';
         </div>
 
         <div class="pricing-card card">
+          <h3 class="pricing-card-title">Pricing</h3>
           <div class="price-addon">
             <h4>Optional Add-On Services</h4>
             <p class="price-note">Elevate your hiring process with tailored tools and support designed to create better interviews, stronger decisions, and a more inclusive candidate experience.</p>
@@ -74,6 +75,7 @@ import Layout from '../../layouts/Layout.astro';
     <div class="container">
       <div class="offering-grid reverse">
         <div class="pricing-card card">
+          <h3 class="pricing-card-title">Pricing</h3>
           <p class="price-note">Pricing is based on the number of roles, seniority levels, and scope of support.</p>
 
           <a href="/contact" class="btn btn-outline btn-full">Get Started</a>
@@ -204,6 +206,15 @@ import Layout from '../../layouts/Layout.astro';
     background: var(--color-white);
     position: sticky;
     top: 6rem;
+  }
+
+  .pricing-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-accent-light);
   }
 
   .price {

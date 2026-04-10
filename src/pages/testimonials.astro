@@ -2,13 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { testimonials } from '../data/testimonials';
 
-const business = [...testimonials]
-  .filter(t => t.type === 'business')
-  .sort((a, b) => a.text.length - b.text.length);
+const business = testimonials.filter(t => t.type === 'business');
 
-const talent = [...testimonials]
-  .filter(t => t.type === 'talent')
-  .sort((a, b) => a.text.length - b.text.length);
+const talent = testimonials.filter(t => t.type === 'talent');
 
 const bCol1 = business.filter((_, i) => i % 2 === 0);
 const bCol2 = business.filter((_, i) => i % 2 === 1);

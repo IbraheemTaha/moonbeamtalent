@@ -27,47 +27,114 @@ import Layout from '../../layouts/Layout.astro';
 
       <!-- a. Workshops -->
       <div class="tab-panel hidden" id="panel-workshops">
+
+        <div class="workshops-intro">
+          <div class="workshops-intro-text">
+            <h2>Workshops</h2>
+            <p class="workshops-subtitle">Practical workshops for navigating the Danish job market</p>
+            <p>These workshops are designed for internationals and professionals who want clearer direction, stronger applications, and a better understanding of how hiring works in Denmark.</p>
+            <p>Each session is practical, focused, and tailored to real challenges job seekers face, from improving your CV and LinkedIn profile to networking, interviewing, and understanding Danish workplace culture.</p>
+            <p>Whether you are just starting your search or trying to gain more traction, these workshops will help you approach the market with more clarity, confidence, and strategy.</p>
+          </div>
+          <div class="workshops-intro-cta">
+
+            <!-- Video -->
+            <div class="workshop-video-wrap">
+              <video
+                id="workshop-video"
+                class="workshop-video"
+                poster="/workshops_materials/video_thumbnail.webp"
+                preload="none"
+                controls
+              >
+                <source src="/workshops_materials/workshop_video.webm" type="video/webm" />
+                <source src="/workshops_materials/workshop_video.mp4" type="video/mp4" />
+              </video>
+              <button class="video-play-btn" id="video-play-btn" aria-label="Play workshop video">
+                <svg viewBox="0 0 24 24" fill="white" width="48" height="48"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)"/><polygon points="10,8 18,12 10,16" fill="white"/></svg>
+              </button>
+            </div>
+
+            <!-- Scattered photos -->
+            <div class="workshop-photos" id="workshop-photos">
+              <div class="photo-item" style="--r:-14deg;--x:0%;--y:0%">
+                <img src="/workshops_materials/1.jpeg" alt="Workshop photo 1" />
+              </div>
+              <div class="photo-item" style="--r:11deg;--x:15%;--y:5%">
+                <img src="/workshops_materials/2.jpeg" alt="Workshop photo 2" />
+              </div>
+              <div class="photo-item" style="--r:-9deg;--x:-10%;--y:8%">
+                <img src="/workshops_materials/3.jpeg" alt="Workshop photo 3" />
+              </div>
+              <div class="photo-item" style="--r:16deg;--x:8%;--y:-4%">
+                <img src="/workshops_materials/4.jpeg" alt="Workshop photo 4" />
+              </div>
+              <div class="photo-item" style="--r:-18deg;--x:-5%;--y:3%">
+                <img src="/workshops_materials/5.jpeg" alt="Workshop photo 5" />
+              </div>
+            </div>
+
+            <!-- Lightbox -->
+            <div class="photo-lightbox hidden" id="photo-lightbox">
+              <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+              <img src="" alt="" id="lightbox-img" />
+            </div>
+
+          </div>
+        </div>
+
         <div class="workshops-grid">
 
           <div class="card workshop-card">
             <div class="workshop-icon">📄</div>
-            <h3>CV Curation for the Danish Market</h3>
-            <p>Your CV is your first impression, and the Danish market has its own standards. In this hands-on workshop, you'll learn how to craft a clean, compelling CV that speaks directly to Danish employers and recruiters. We cover structure, tone, what to include (and what to leave out), and how to tailor your experience to stand out in a competitive market.</p>
+            <h3>CV for the Danish Job Market</h3>
+            <p>Learn how to structure and tailor your CV for Danish employers. This workshop helps you present your experience clearly, highlight relevance, and create a stronger first impression.</p>
             <a href="/contact" class="btn btn-outline">Enquire Now</a>
           </div>
 
           <div class="card workshop-card">
             <div class="workshop-icon">💼</div>
-            <h3>LinkedIn Profile Enhancement</h3>
-            <p>LinkedIn is where Danish recruiters search, and most profiles don't make the cut. This workshop walks you through every section of your profile with one goal: making you impossible to overlook. From your headline and summary to your experience and skills, you'll leave with a profile that attracts the right opportunities and communicates your value.</p>
+            <h3>LinkedIn Profile Optimisation</h3>
+            <p>
+            
+            Improve your LinkedIn profile so it communicates your value clearly and attracts the right opportunities. We cover your headline, summary, experience, and overall positioning.
+
+            </p>
+
             <a href="/contact" class="btn btn-outline">Enquire Now</a>
           </div>
 
           <div class="card workshop-card">
             <div class="workshop-icon">🎯</div>
             <h3>Job Search Strategy & Targeting</h3>
-            <p>Applying to everything rarely works. This workshop teaches you how to build a focused, strategic job search, identifying the right companies, roles, and channels for your profile. You'll learn how to research the Danish market, craft targeted applications, and use unsolicited outreach to open doors that job boards never show.</p>
+            <p>
+            Build a more focused and effective job search. Learn how to target the right roles, identify suitable companies, and approach the Danish market with more clarity and intention.
+            </p>
             <a href="/contact" class="btn btn-outline">Enquire Now</a>
           </div>
 
           <div class="card workshop-card">
             <div class="workshop-icon">🤝</div>
-            <h3>Networking the Danish Way</h3>
-            <p>Networking in Denmark looks different, it's quieter, more relationship-driven, and often the most direct route to a job offer. This workshop covers how to reach out professionally on LinkedIn, how to approach coffee meetings, and how to build a genuine network in Denmark without feeling awkward or transactional.</p>
+            <h3>Networking in Denmark</h3>
+            <p>
+            Understand how networking works in the Danish job market. Learn how to reach out professionally, build genuine connections, and create opportunities through meaningful conversations.
+            </p>
             <a href="/contact" class="btn btn-outline">Enquire Now</a>
           </div>
 
           <div class="card workshop-card">
             <div class="workshop-icon">🗣️</div>
-            <h3>Interview Preparation & Confidence</h3>
-            <p>Danish interviews are less formal but just as demanding. This workshop prepares you for both fit and competency-based questions, teaches you how to structure confident answers, and gives you a clear sense of what Danish hiring managers are really looking for. Includes a mock interview segment with live feedback.</p>
+            <h3>Interview Preparation and Confidence</h3>
+            <p>
+Prepare for interviews with more confidence and clarity. This workshop helps you structure strong answers, understand Danish interview expectations, and present yourself effectively.            </p>
             <a href="/contact" class="btn btn-outline">Enquire Now</a>
           </div>
 
           <div class="card workshop-card">
             <div class="workshop-icon">🌍</div>
             <h3>Understanding Danish Workplace Culture</h3>
-            <p>Getting hired is one thing, thriving is another. This workshop gives you a practical guide to Danish workplace culture: flat hierarchies, direct communication, work-life balance, and unspoken norms that can shape your integration. Essential for anyone transitioning into a Danish work environment.</p>
+            <p>
+Get practical insight into Danish workplace culture, communication style, and expectations. A useful workshop for professionals who want to integrate and succeed in Denmark.            </p>
             <a href="/contact" class="btn btn-outline">Enquire Now</a>
           </div>
 
@@ -210,6 +277,59 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <script is:inline>
+  // Video play button
+  var videoEl = document.getElementById('workshop-video');
+  var playBtn = document.getElementById('video-play-btn');
+  if (videoEl && playBtn) {
+    playBtn.addEventListener('click', function() {
+      playBtn.classList.add('hidden');
+      videoEl.play();
+    });
+    videoEl.addEventListener('pause', function() {
+      if (!videoEl.seeking && !videoEl.ended) {
+        playBtn.classList.remove('hidden');
+      }
+    });
+    videoEl.addEventListener('ended', function() {
+      playBtn.classList.remove('hidden');
+    });
+    videoEl.addEventListener('play', function() {
+      playBtn.classList.add('hidden');
+    });
+  }
+
+  // Photo lightbox
+  var lightbox = document.getElementById('photo-lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxClose = document.getElementById('lightbox-close');
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.photo-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      openLightbox(this.querySelector('img').src, this.querySelector('img').alt);
+    });
+  });
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+  }
+  if (lightbox) {
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
+
   // Tab switching
   document.querySelectorAll('.tab-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -296,6 +416,179 @@ import Layout from '../../layouts/Layout.astro';
   .empty-state h3 { margin-bottom: 0.75rem; }
   .empty-state p { color: var(--color-text-light); font-size: 0.9375rem; }
   .empty-state a { color: var(--color-accent); font-weight: 600; }
+
+  /* ── Workshops intro ── */
+  .workshops-intro {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .workshops-intro-text h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .workshops-subtitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .workshops-intro-text p {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .workshops-intro-cta {
+    position: sticky;
+    top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* ── Video ── */
+  .workshop-video-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #000;
+    aspect-ratio: 16/9;
+  }
+
+  .workshop-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .video-play-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .video-play-btn.hidden {
+    display: none;
+  }
+
+  /* ── Scattered photos ── */
+  .workshop-photos {
+    position: relative;
+    height: 220px;
+  }
+
+  .photo-item {
+    position: absolute;
+    width: 42%;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    overflow: hidden;
+    transform: rotate(var(--r)) translate(var(--x), var(--y));
+    transition: transform 0.25s ease, box-shadow 0.25s ease, z-index 0s;
+    z-index: 1;
+  }
+
+  .photo-item:nth-child(1) { left: 0%;   top: 10px; }
+  .photo-item:nth-child(2) { left: 30%;  top: 0px;  }
+  .photo-item:nth-child(3) { left: 60%;  top: 20px; }
+  .photo-item:nth-child(4) { left: 5%;  top: 100px; }
+  .photo-item:nth-child(5) { left: 50%;  top: 110px; }
+
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4/3;
+  }
+
+  .photo-item:hover {
+    transform: rotate(0deg) translate(var(--x), var(--y)) scale(1.08);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+    z-index: 10;
+  }
+
+  /* ── Lightbox ── */
+  .photo-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .photo-lightbox.hidden {
+    display: none;
+  }
+
+  .photo-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 16px 64px rgba(0,0,0,0.5);
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .workshops-monthly-note {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    border-left: 3px solid var(--color-accent);
+    padding-left: 0.75rem;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .workshops-intro {
+      grid-template-columns: 1fr;
+    }
+
+    .workshops-intro-cta {
+      position: static;
+    }
+  }
 
   /* ── Workshops grid ── */
   .workshops-grid {
