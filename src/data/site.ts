@@ -6,7 +6,7 @@ export const site = {
   email: "nivedita.mishra@moonbeamtalent.dk",
   address: "Møllegade 11A, 9000 Aalborg",
   linkedin: "https://www.linkedin.com/in/mishranivedita/",
-  footerDescription: "Taking your tech recruiting to the next level",
+  footerDescription: "Helping startups and scale-ups hire top talent across tech, product, and commercial teams",
   heroCta: "Let's talk",
   heroCtaLink: "#contact",
   web3formsKey: "2f7da930-4ba9-477b-bfbe-a4c40524070b",

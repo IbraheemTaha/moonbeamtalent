@@ -6,8 +6,8 @@ import Layout from '../../layouts/Layout.astro';
   <div class="page-hero">
     <div class="container">
       <span class="label" style="color: rgba(255,255,255,0.7);">Our Services</span>
-      <h1>Recruitment Solutions That Deliver</h1>
-      <p>From executive search to career coaching, tailored support for businesses and professionals alike.</p>
+      <h1>Hiring and Talent Support Built Around Growth</h1>
+      <p>Tailored support for growing companies hiring and professionals building their next move.</p>
     </div>
   </div>
 
@@ -18,14 +18,14 @@ import Layout from '../../layouts/Layout.astro';
           <div class="service-icon-lg">🔍</div>
           <h3>Recruitment</h3>
           <ul class="service-bullets">
-            <li>Tailored onboarding support for internationals and their families moving to Denmark</li>
-            <li>Help with practical setup such as CPR registration, housing, and schools</li>
-            <li>Support with cultural integration and settling into life in Denmark</li>
-            <li>Guidance for spouses, including integration and support</li>
-            <li>A smoother transition that helps new hires settle in faster</li>
-            <li>Better early performance, engagement, and long-term retention</li>
+            <li>Strategic recruitment support for startups, scale-ups, and growing teams</li>
+            <li>End-to-end search support across tech, product, commercial, and leadership roles</li>
+            <li>Targeted sourcing and personalised outreach to reach the right talent</li>
+            <li>Structured, transparent processes that support better hiring decisions</li>
+            <li>Flexible recruitment solutions for one-off hires or ongoing growth support</li>
+            <li>Focused on quality hires, strong candidate experience, and long-term business impact</li>
           </ul>
-          <p class="card-cta-text">Ready to find the talent your team needs? Let's make it happen.</p>
+          <p class="card-cta-text">Find the right people to help your business grow.</p>
           <a href="/services/business" class="btn btn-outline">Start Hiring →</a>
         </div>
 
@@ -33,14 +33,16 @@ import Layout from '../../layouts/Layout.astro';
           <div class="service-icon-lg">🎯</div>
           <h3>Career Consulting</h3>
           <ul class="service-bullets">
-            <li>Personalized career coaching for professionals navigating the Danish job market</li>
-            <li>Support with CV and LinkedIn optimization to improve visibility and impact</li>
-            <li>Interview preparation tailored to the Danish hiring market</li>
-            <li>Guidance on targeted company outreach and job search strategy</li>
-            <li>Access to relevant network connections and insights</li>
-            <li>Helping internationals present their skills clearly and succeed with confidence</li>
+
+            <li>Personalised career support for professionals navigating the Danish job market</li>
+            <li>Hands-on help with CV and LinkedIn optimisation to improve clarity and impact</li>
+            <li>Interview preparation tailored to Danish hiring expectations</li>
+            <li>Guidance on targeted outreach, positioning, and job search strategy</li>
+            <li>Support in presenting your experience, strengths, and transferable skills clearly</li>
+            <li>Designed to help internationals build confidence and move forward with direction</li>
+
           </ul>
-          <p class="card-cta-text">Your next career move starts here. Let's get you there.</p>
+          <p class="card-cta-text">Take the next step in your career with clarity and confidence.</p>
           <a href="/services/talent" class="btn btn-outline">Advance Your Career →</a>
         </div>
       </div>
@@ -111,6 +113,13 @@ import Layout from '../../layouts/Layout.astro';
   .service-detail {
     padding: 2.5rem 2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-detail .btn {
+    margin-top: auto;
+    align-self: center;
   }
 
   .service-icon-lg {
