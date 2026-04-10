@@ -77,7 +77,9 @@ import Layout from '../../layouts/Layout.astro';
             <!-- Lightbox -->
             <div class="photo-lightbox hidden" id="photo-lightbox">
               <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+              <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">&#8249;</button>
               <img src="" alt="" id="lightbox-img" />
+              <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">&#8250;</button>
             </div>
 
           </div>
@@ -302,12 +304,24 @@ Get practical insight into Danish workplace culture, communication style, and ex
   var lightbox = document.getElementById('photo-lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
   var lightboxClose = document.getElementById('lightbox-close');
+  var lightboxPrev = document.getElementById('lightbox-prev');
+  var lightboxNext = document.getElementById('lightbox-next');
+  var photoItems = Array.from(document.querySelectorAll('.photo-item img'));
+  var currentIndex = 0;
+
   // Move lightbox to body to escape all stacking contexts
   document.body.appendChild(lightbox);
 
-  function openLightbox(src, alt) {
-    lightboxImg.src = src;
-    lightboxImg.alt = alt;
+  function showPhoto(index) {
+    if (index < 0 || index >= photoItems.length) return;
+    currentIndex = index;
+    lightboxImg.src = photoItems[currentIndex].src;
+    lightboxImg.alt = photoItems[currentIndex].alt;
+    lightboxPrev.style.visibility = currentIndex === 0 ? 'hidden' : '';
+    lightboxNext.style.visibility = currentIndex === photoItems.length - 1 ? 'hidden' : '';
+  }
+  function openLightbox(index) {
+    showPhoto(index);
     lightbox.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
@@ -316,20 +330,20 @@ Get practical insight into Danish workplace culture, communication style, and ex
     lightboxImg.src = '';
     document.body.style.overflow = '';
   }
-  document.querySelectorAll('.photo-item').forEach(function(item) {
-    item.addEventListener('click', function() {
-      openLightbox(this.querySelector('img').src, this.querySelector('img').alt);
-    });
+  document.querySelectorAll('.photo-item').forEach(function(item, i) {
+    item.addEventListener('click', function() { openLightbox(i); });
   });
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', function(e) { e.stopPropagation(); showPhoto(currentIndex - 1); });
+  if (lightboxNext) lightboxNext.addEventListener('click', function(e) { e.stopPropagation(); showPhoto(currentIndex + 1); });
   if (lightbox) {
     lightbox.addEventListener('click', function(e) {
       if (e.target === lightbox) closeLightbox();
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
+      if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
     });
   }
 
@@ -552,6 +566,33 @@ Get practical insight into Danish workplace culture, communication style, and ex
     box-shadow: 0 16px 64px rgba(0,0,0,0.5);
     object-fit: contain;
   }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    line-height: 1;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 1;
+  }
+
+  .lightbox-nav:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .lightbox-prev { left: 1.5rem; }
+  .lightbox-next { right: 1.5rem; }
 
   .lightbox-close {
     position: absolute;
